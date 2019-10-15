@@ -32,10 +32,11 @@ public class Main {
             = new Scanner(System.in, "Windows-1252")
                     .useLocale(Locale.ENGLISH).useDelimiter("\\s+");
 
+    public static final Calendar CAL = Calendar.getInstance();
+
     public static void main(String[] args) {
         // Formato, instancia y llamada a los datos de Calendario CAL. 
         SimpleDateFormat SDF = new SimpleDateFormat("HH:mm:ss");
-        Calendar CAL = Calendar.getInstance();
         Date date = CAL.getTime();
 
         //Declaramos variables hour, min, sec...
@@ -54,12 +55,12 @@ public class Main {
             min = SCN.nextInt();
             System.out.printf("Segundo inicio..: ");
             sec = SCN.nextInt();
-            
+
             //Operamos la resta de las horas.
             hourTot = Math.abs(hour - CAL.get(Calendar.HOUR_OF_DAY));
             minTot = Math.abs(min - CAL.get(Calendar.MINUTE));
             secTot = Math.abs(sec - CAL.get(Calendar.SECOND));
-            
+
             //Salida por consola
             System.out.println("\nHora actual.....: " + SDF.format(date));
             System.out.printf("Hora inicio.....: %02d:%02d:%02d%n", hour, min, sec);
