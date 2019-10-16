@@ -48,14 +48,15 @@ public class Main {
             System.out.printf("Segundo inicio..: ");
             sec = SCN.nextInt();
             SCN.nextLine();
-
+            
+            //Asigna valores de Calendar a las variables
             hourAct = CAL.get(Calendar.HOUR_OF_DAY);
             minAct = CAL.get(Calendar.MINUTE);
             secAct = CAL.get(Calendar.SECOND);
-
+            
+            //Pasamos el tiempo a milisegundos
             timeUser = hour * 3600 + min * 60 + sec;
             timeAct = hourAct * 3600 + minAct * 60 + secAct;
-
             // Dif en segundos
             secDis = timeAct - timeUser;
             //minutos
