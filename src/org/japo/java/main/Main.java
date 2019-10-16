@@ -15,9 +15,8 @@
  */
 package org.japo.java.main;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -37,40 +36,42 @@ public class Main {
     public static void main(String[] args) {
         // Formato, instancia y llamada a los datos de Calendario CAL. 
         SimpleDateFormat SDF = new SimpleDateFormat("HH:mm:ss");
-        Date date = CAL.getTime();
 
         //Declaramos variables hour, min, sec...
-        int hour, min, sec, hourTot, minTot, secTot;
+        int hour, min, sec, hourAct, minAct, secAct, timeUser, timeAct;
+        int secDis, minDis, hourDis;
 
-        /* Lineas comentadas, usamos la expresión directamente en la resta de
-        hourTot, minTot y secTot.  (lineas 59 a 61)
-        
-        int hourCal = CAL.get(Calendar.HOUR_OF_DAY);
-        int minCal = CAL.get(Calendar.MINUTE);
-        int secCal = CAL.get(Calendar.SECOND); */
         try {
             System.out.printf("Hora inicio.....: ");
             hour = SCN.nextInt();
+            SCN.nextLine();
             System.out.printf("Minuto inicio...: ");
             min = SCN.nextInt();
+            SCN.nextLine();
             System.out.printf("Segundo inicio..: ");
             sec = SCN.nextInt();
+            SCN.nextLine();
 
-            //Operamos la resta de las horas.
-            hourTot = Math.abs(hour - CAL.get(Calendar.HOUR_OF_DAY));
-            minTot = Math.abs(min - CAL.get(Calendar.MINUTE));
-            secTot = Math.abs(sec - CAL.get(Calendar.SECOND));
+            hourAct = CAL.get(Calendar.HOUR_OF_DAY);
+            minAct = CAL.get(Calendar.MINUTE);
+            secAct = CAL.get(Calendar.SECOND);
 
-            //Salida por consola
-            System.out.println("\nHora actual.....: " + SDF.format(date));
+            timeUser = hour * 3600 + min * 60 + sec;
+            timeAct = hourAct * 3600 + minAct * 60 + secAct;
+
+            // Dif en segundos
+            secDis = timeAct - timeUser;
+            //minutos
+            minDis = secDis / 60;
+            secDis = secDis % 60;
+            // horas
+            hourDis = minDis / 60;
+            minDis = minDis % 60;
+
+            System.out.printf("Hora actual.....: %02d:%02d:%02d%n", hourAct, minAct, secAct);
             System.out.printf("Hora inicio.....: %02d:%02d:%02d%n", hour, min, sec);
-            System.out.printf("Tiempo de clase.: %02d:%02d:%02d%n%n", hourTot, minTot, secTot);
+            System.out.printf("Tiempo de clase.: %02d:%02d:%02d%n%n", hourDis, minDis, secDis);
 
-            /* Pruebas sout
-            System.out.println(hourTot);
-            System.out.println(minTot);
-            System.out.println(secTot);
-             */
         } catch (Exception e) {
             System.out.println("OOOOPPPS!");
         }
