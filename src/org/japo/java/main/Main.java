@@ -34,8 +34,6 @@ public class Main {
     public static final Calendar CAL = Calendar.getInstance();
 
     public static void main(String[] args) {
-        // Formato, instancia y llamada a los datos de Calendario CAL. 
-        SimpleDateFormat SDF = new SimpleDateFormat("HH:mm:ss");
 
         //Declaramos variables hour, min, sec...
         int hour, min, sec, hourAct, minAct, secAct, timeUser, timeAct;
